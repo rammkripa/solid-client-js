@@ -27,6 +27,7 @@
 export const fetch: typeof window.fetch = async (resource, init) => {
   /* istanbul ignore if: `require` is always defined in the unit test environment */
   if (typeof window === "object" && typeof require !== "function") {
+    fetch.bind(window);
     return window.fetch(resource, init);
   }
   /* istanbul ignore if: `require` is always defined in the unit test environment */
